@@ -32,7 +32,7 @@ public class Contato extends ContatoBasico {
     @Override
     public String getDados() {
         String dados = super.getDados();
-        dados += "Data de nascimento: " + dtnasc + "\n" + "Idade: " + idade;
+        dados += "Data de nascimento: " + dtnasc + "\n" + "Idade: " + idade + " anos";
         return dados;
     }
 

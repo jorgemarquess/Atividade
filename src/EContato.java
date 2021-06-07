@@ -23,7 +23,7 @@ public class EContato extends Contato {
     @Override
     public String getDados() {
         String dados = super.getDados();
-        dados += "E-mail: " + email + "Home page: " + homepage;
+        dados += "\n" + "E-mail: " + email + "\n" + "Home page: " + homepage;
         return dados;
     }
 

@@ -5,9 +5,9 @@ public class Agenda {
     private String email;
     private String palavraChave;
     private int pos;
-    private List<ContatoBasico> contatoBasicoLista = Arrays.asList();
-    private List<EContato> eContatoLista = Arrays.asList();
-    private List<ContatoComercial> contatoComercialLista = Arrays.asList();
+    private List<ContatoBasico> contatoBasicoLista = new ArrayList<>();
+    private List<EContato> eContatoLista = new ArrayList<>();
+    private List<ContatoComercial> contatoComercialLista = new ArrayList<>();
 
 
     public Agenda(String nome, String email, String palavraChave, int pos, List<EContato> eContatoLista, List<ContatoComercial> contatoComercialLista, List<ContatoBasico> contatoBasicoLista) {

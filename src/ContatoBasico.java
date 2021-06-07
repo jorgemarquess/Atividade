@@ -26,7 +26,7 @@ abstract public class ContatoBasico {
     }
 
     public String getDados() {
-        String dados = nome + "\n";
+        String dados = "\n --------------DADOS DO CONTATO----------------" + "\nNome: " + nome + "\n";
         for (Telefone telefone : telefones) {
             dados += telefone.getTelefone() + "\n";
         }
