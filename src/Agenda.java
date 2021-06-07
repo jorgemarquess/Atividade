@@ -6,27 +6,31 @@ public class Agenda {
     private String palavraChave;
     private int pos;
     private List<ContatoBasico> contatoBasicoLista = Arrays.asList();
+    private List<EContato> eContatoLista = Arrays.asList();
+    private List<ContatoComercial> contatoComercialLista = Arrays.asList();
 
 
-    public Agenda(String nome, String email, String palavraChave, int pos, List<ContatoBasico> contatoBasicoLista) {
+    public Agenda(String nome, String email, String palavraChave, int pos, List<EContato> eContatoLista, List<ContatoComercial> contatoComercialLista, List<ContatoBasico> contatoBasicoLista) {
         this.nome = nome;
         this.email = email;
         this.palavraChave = palavraChave;
         this.pos = pos;
         this.contatoBasicoLista = contatoBasicoLista;
+        this.contatoComercialLista = contatoComercialLista;
+        this.eContatoLista = eContatoLista;
     }
 
     public Agenda() {
 
     }
 
-    public String buscarNome(String nome) {
+    public Optional<ContatoBasico> buscarNome(String nome) {
         for (ContatoBasico contatoBasico : contatoBasicoLista) {
             if (contatoBasico.getNome().equals(nome)) {
-                return contatoBasico.getDados();
+                return Optional.of(contatoBasico);
             }
         }
-        return "Nome não encontrado";
+        return null;
     }
 
     public Optional<ContatoBasico> buscarPosicao(int pos) {
@@ -34,22 +38,28 @@ public class Agenda {
 
     }
 
-    public Contato buscarEmail(String email) { //Validar se o email está sendo único
+    public Optional<EContato> buscarEmail(String email) { //Validar se o email está sendo único
         for (ContatoBasico contatoBasico : contatoBasicoLista) {
-                if (((EContato) contatoBasico).getEmail().equals(email)) {
-                    return contatoBasico.getDados();
-                }
+            if (((EContato) contatoBasico).getEmail().equals(email)) {
+                return Optional.of((EContato) contatoBasico);
+            }
         }
 
-        return "Não encontrado";
+        return null;
     }
 
-    public void buscarGeral(String palavraChave) {
+    public Optional<ContatoBasico> buscarGeral(String palavraChave) {
+        for (ContatoBasico contatoBasico : contatoBasicoLista) {
+            if (contatoBasico.getNome().contains(palavraChave) || ((EContato) contatoBasico).getEmail().contains(palavraChave)) {
+                return Optional.of(contatoBasico);
+            }
+        }
 
+        return null;
     }
 
-    public void buscarTodos() {
-
+    public List<ContatoBasico> buscarTodos() {
+        return contatoBasicoLista;
 
     }
 
@@ -58,8 +68,8 @@ public class Agenda {
 
     }
 
-    public void inserir(Contato contato) {
-        this.contatoBasicoLista.add(contato);
+    public void inserir(ContatoBasico contatoBasico) {
+        this.contatoBasicoLista.add(contatoBasico);
 
     }
 

@@ -39,7 +39,7 @@ public class Contato extends ContatoBasico {
     @Override
     public String toString() {
         return "Contato{" +
-                "dtnasc=" + formatter.format(dtnasc.getTime()) +
+                "dtnasc=" + formatter.format(dtnasc) +
                 ", idade=" + idade +
                 '}';
     }
