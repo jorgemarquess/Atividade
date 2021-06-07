@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.*;
 
 public class AtividadeJorge {
@@ -7,14 +8,14 @@ public class AtividadeJorge {
         List<Agenda> agendas = Arrays.asList(agenda);
         System.out.println(agendas.toString());
 
-        Telefone telefone = new Telefone();
-        Telefone telefone1 = new Telefone();
-        Telefone telefone2 = new Telefone();
+        Telefone telefone = new Telefone("32554578", "Comercial");
+        Telefone telefone1 = new Telefone("55557777", "Pessoal");
+        Telefone telefone2 = new Telefone("87772111", "Pessoal");
         List<Telefone> telefones = Arrays.asList(telefone, telefone1, telefone2);
-        Calendar calendar = new GregorianCalendar(1998, 7, 18);
-        Contato contato = new Contato("Jorgin", telefones, calendar, 22);
+        LocalDate dtnasc = LocalDate.of(1998, 7, 18);
+        ContatoBasico contato = new Contato("Jorgin", telefones, dtnasc, 22);
+        ContatoBasico contatoComercial = new ContatoComercial("Luisinho", telefones, "Professor", "Integral");
         System.out.println(contato.toString());
-
 
     }
 }

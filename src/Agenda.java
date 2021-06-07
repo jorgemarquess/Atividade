@@ -1,38 +1,47 @@
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Agenda {
     private String nome;
     private String email;
     private String palavraChave;
     private int pos;
-    private List<Contato> contato = Arrays.asList();
+    private List<ContatoBasico> contatoBasicoLista = Arrays.asList();
 
 
-    public Agenda(String nome, String email, String palavraChave, int pos, List<Agenda> agenda) {
+    public Agenda(String nome, String email, String palavraChave, int pos, List<ContatoBasico> contatoBasicoLista) {
         this.nome = nome;
         this.email = email;
         this.palavraChave = palavraChave;
         this.pos = pos;
-        this.contato = contato;
+        this.contatoBasicoLista = contatoBasicoLista;
     }
 
     public Agenda() {
 
     }
 
-    public void buscarNome(String nome) {
+    public String buscarNome(String nome) {
+        for (ContatoBasico contatoBasico : contatoBasicoLista) {
+            if (contatoBasico.getNome().equals(nome)) {
+                return contatoBasico.getDados();
+            }
+        }
+        return "Nome não encontrado";
+    }
 
-
+    public Optional<ContatoBasico> buscarPosicao(int pos) {
+        return Optional.of(contatoBasicoLista.get(pos));
 
     }
 
-    public void buscarPosicao(int pos) {
+    public Contato buscarEmail(String email) { //Validar se o email está sendo único
+        for (ContatoBasico contatoBasico : contatoBasicoLista) {
+                if (((EContato) contatoBasico).getEmail().equals(email)) {
+                    return contatoBasico.getDados();
+                }
+        }
 
-    }
-
-    public void buscarEmail(String email) {
-
+        return "Não encontrado";
     }
 
     public void buscarGeral(String palavraChave) {
@@ -44,12 +53,13 @@ public class Agenda {
 
     }
 
-    public void obterQuantidade() {
+    public int obterQuantidade() {
+        return contatoBasicoLista.size();
 
     }
 
     public void inserir(Contato contato) {
-        this.contato.add(contato);
+        this.contatoBasicoLista.add(contato);
 
     }
 

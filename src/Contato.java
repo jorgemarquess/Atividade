@@ -1,23 +1,23 @@
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Contato extends ContatoBasico {
-    private Calendar dtnasc;
+    private LocalDate dtnasc;
     private int idade;
     private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); //formatador privado de data
 
-    public Contato(String nome, List<Telefone> telefones, Calendar dtnasc, int idade) {
+    public Contato(String nome, List<Telefone> telefones, LocalDate dtnasc, int idade) {
         super(nome, telefones);
         this.dtnasc = dtnasc;
         this.idade = idade;
     }
 
-    public String getDtnasc() {
-        return formatter.format(dtnasc.getTime());
+    public LocalDate getDtnasc() {
+        return dtnasc;
     }
 
-    public void setDtnasc(Calendar dtnasc) {
+    public void setDtnasc(LocalDate dtnasc) {
         this.dtnasc = dtnasc;
     }
 
